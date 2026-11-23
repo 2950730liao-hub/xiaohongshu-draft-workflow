@@ -4,7 +4,7 @@ import { access, realpath, readFile } from "node:fs/promises";
 import { constants } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { randomUUID } from "node:crypto";
 import { saveXhsDraftInBrowser, findXhsDraft } from "./draft-browser.mjs";
 import { sourceId } from "./discovery.mjs";
@@ -13,6 +13,12 @@ export async function binary() {
   const candidates = process.env.XHS_OPENCLI_BIN
     ? [process.env.XHS_OPENCLI_BIN]
     : [
+        fileURLToPath(
+          new URL(
+            "../.runtime/opencli/node_modules/.bin/opencli",
+            import.meta.url,
+          ),
+        ),
         join(homedir(), ".local/bin/opencli"),
         join(
           homedir(),
