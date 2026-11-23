@@ -1,0 +1,4 @@
+interface:
+  display_name: "小红书客户向草稿工作流"
+  short_description: "检索客户相关笔记，基于真实业务资料创作图文并完成浏览器草稿暂存与回读"
+  default_prompt: "使用 $xiaohongshu-draft-workflow 为我的业务检索客户向选题并完成图文草稿交接。"
